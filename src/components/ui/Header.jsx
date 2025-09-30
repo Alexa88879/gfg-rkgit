@@ -14,6 +14,7 @@ const Header = () => {
 
   const navigationItems = [
     { label: 'Home', path: '/', icon: 'Home', tooltip: 'Community Hub' },
+    { label: 'Events', path: '/register', icon: 'Calendar', tooltip: 'Event Registration' },
     { label: 'Feedback', path: '/feedback', icon: 'MessageSquare', tooltip: 'Share Feedback' },
     { label: 'Career', path: '/career', icon: 'Users', tooltip: 'Join Us' },
     { label: 'Contact', path: '/contact', icon: 'Mail', tooltip: 'Get in Touch' }
@@ -28,6 +29,9 @@ const Header = () => {
       case '/home':
         setActiveSection('home');
         break;
+      case '/register':
+        setActiveSection('events');
+        break;
       case '/feedback':
         setActiveSection('feedback');
         break;
@@ -39,7 +43,12 @@ const Header = () => {
         setActiveSection('contact');
         break;
       default:
-        setActiveSection('home');
+        // Check if current path starts with /register/ (for specific event pages)
+        if (currentPath.startsWith('/register/')) {
+          setActiveSection('events');
+        } else {
+          setActiveSection('home');
+        }
     }
   }, []);
 

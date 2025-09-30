@@ -9,6 +9,8 @@ import Feedback from './pages/feedback';
 import Contact from './pages/contact';
 import CommunityFeedbackHub from './pages/community-feedback-hub';
 import CareerApplication from './pages/career-application';
+import Register from './pages/register';
+import EventRegistration from './pages/register/[eventId]';
 import AdminLogin from './pages/admin/Login';
 import AdminDashboard from './pages/admin/Dashboard';
 
@@ -27,6 +29,8 @@ const Routes = () => {
             <Route path="/career" element={<CareerApplication />} />
             <Route path="/career-application" element={<CareerApplication />} />
             <Route path="/community-feedback-hub" element={<CommunityFeedbackHub />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/register/:eventId" element={<EventRegistration />} />
             
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />

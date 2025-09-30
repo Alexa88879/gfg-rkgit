@@ -10,6 +10,7 @@ function Icon({
     strokeWidth = 2,
     ...props
 }) {
+
     const IconComponent = LucideIcons?.[name];
 
     if (!IconComponent) {
