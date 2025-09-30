@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "../../utils/cn";
+import Icon from "../AppIcon";
 
 const Input = React.forwardRef(({
     className,
@@ -9,6 +10,7 @@ const Input = React.forwardRef(({
     error,
     required = false,
     id,
+    iconName,
     ...props
 }, ref) => {
     // Generate unique ID if not provided
@@ -65,17 +67,25 @@ const Input = React.forwardRef(({
                 </label>
             )}
 
-            <input
-                type={type}
-                className={cn(
-                    baseInputClasses,
-                    error && "border-destructive focus-visible:ring-destructive",
-                    className
+            <div className="relative">
+                {iconName && (
+                    <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">
+                        <Icon name={iconName} size={16} />
+                    </div>
                 )}
-                ref={ref}
-                id={inputId}
-                {...props}
-            />
+                <input
+                    type={type}
+                    className={cn(
+                        baseInputClasses,
+                        iconName && "pl-10", // Add left padding when icon is present
+                        error && "border-destructive focus-visible:ring-destructive",
+                        className
+                    )}
+                    ref={ref}
+                    id={inputId}
+                    {...props}
+                />
+            </div>
 
             {description && !error && (
                 <p className="text-sm text-muted-foreground">

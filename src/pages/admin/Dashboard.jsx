@@ -9,6 +9,7 @@ import AnalyticsViewer from './components/AnalyticsViewer';
 import UserManagement from './components/UserManagement';
 import BackupManager from './components/BackupManager';
 import ExportHistoryViewer from './components/ExportHistoryViewer';
+import EventManager from './components/EventManager';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -89,6 +90,12 @@ const AdminDashboard = () => {
       permission: 'canViewAnalytics'
     },
     {
+      id: 'events',
+      label: 'Event Management',
+      icon: 'Calendar',
+      permission: 'canViewFeedback'
+    },
+    {
       id: 'users',
       label: 'User Management',
       icon: 'UserCog',
@@ -119,6 +126,8 @@ const AdminDashboard = () => {
         return <ApplicationsViewer />;
       case 'analytics':
         return <AnalyticsViewer />;
+      case 'events':
+        return <EventManager />;
       case 'users':
         return <UserManagement />;
       case 'backup':
